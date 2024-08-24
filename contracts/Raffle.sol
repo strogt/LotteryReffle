@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.7;
 
-// 继承VRFConsumerBaseV2(@chainlink/contracts为0.8.0)
-import "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol";
+// 继承VRFConsumerBaseV2(@chainlink/contracts为0.4.1)
+import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 // 自动抽奖
-import "@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 
 error Rafle__NotEnoughETHEntered();
 error Rafle__TransgerFailed();
@@ -21,7 +21,7 @@ error Raffle__UpkeepNotNeeded(
  * @dev 实现了Chainlink VRF v2 以及 Chain keepers
  */
 
-contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
+contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     /* 开奖状态 */
     enum RaffleState {
         OPEN,
